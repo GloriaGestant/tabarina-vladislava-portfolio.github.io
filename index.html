@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Портфолио · Табарина В.В. · ГБОУПО «СТЭТ»</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f5ff;
+            color: #1e1a2f;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 2rem;
+        }
+
+        .portfolio-section {
+            background: white;
+            border-radius: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1.8rem 2rem;
+            box-shadow: 0 8px 24px rgba(98, 0, 128, 0.08);
+            border: 1px solid #e9ddf5;
+            transition: 0.2s;
+        }
+
+        .section-title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #2b0f3d;
+            border-left: 6px solid #9b4dff;
+            padding-left: 1rem;
+            margin-bottom: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .section-title i {
+            color: #9b4dff;
+            font-size: 1.6rem;
+        }
+        .badge-official {
+            background: #f0eaff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: #5e2a8c;
+            letter-spacing: 0.3px;
+        }
+        hr {
+            margin: 1rem 0;
+            border-color: #ede4f8;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+        .info-card {
+            background: #fefbff;
+            border-radius: 1.2rem;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid #efe5fc;
+            box-shadow: 0 2px 8px rgba(128, 0, 255, 0.03);
+        }
+        .visa-card {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: flex-start;
+        }
+        .visa-photo {
+            flex-shrink: 0;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 28px;
+            border: 3px solid #cfb5ff;
+            background: #f4edff;
+            box-shadow: 0 6px 12px rgba(91, 33, 127, 0.1);
+        }
+        .visa-details {
+            flex: 1;
+        }
+        .stud-info-line {
+            background: #f7f2ff;
+            padding: 0.8rem 1.2rem;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            border-left: 4px solid #aa7aff;
+        }
+        .contact-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.8rem;
+        }
+        .contact-item {
+            background: #f0eaff;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .contact-item a {
+            text-decoration: none;
+            color: #4a1d7c;
+            font-weight: 500;
+        }
+        .doc-badge {
+            display: inline-block;
+            background: #f0eaff;
+            border-radius: 20px;
+            padding: 0.2rem 0.7rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #5b2d94;
+            margin: 0.2rem 0.2rem;
+        }
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .cert-card {
+            background: #ffffff;
+            border-radius: 1.2rem;
+            padding: 1rem;
+            border: 1px solid #efe5fc;
+            transition: 0.2s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 14px rgba(105, 40, 155, 0.05);
+            cursor: pointer;
+        }
+        .cert-card:hover {
+            border-color: #c6a8ff;
+            box-shadow: 0 10px 22px rgba(98, 30, 150, 0.1);
+            transform: translateY(-2px);
+        }
+        .file-preview-area {
+            background: #fbf9ff;
+            border-radius: 1rem;
+            margin: 0.7rem 0;
+            min-height: 190px;
+            max-height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 1px solid #e6dafb;
+        }
+        .file-preview {
+            width: 100%;
+            text-align: center;
+            background: #ffffff;
+            border-radius: 0.8rem;
+        }
+        .file-preview img {
+            max-width: 100%;
+            max-height: 190px;
+            object-fit: contain;
+            cursor: pointer;
+        }
+        .file-preview img:hover {
+            opacity: 0.9;
+        }
+        .cert-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin: 0.5rem 0 0.2rem;
+            color: #2a1742;
+        }
+        .cert-link {
+            margin-top: 0.9rem;
+            background: #f2ebff;
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #5a2a91;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            display: block;
+        }
+        .cert-link:hover {
+            background: #e7dcff;
+            color: #3d1b65;
+        }
+        footer {
+            text-align: center;
+            border-top: 1px solid #e2d4fc;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            color: #5d4882;
+        }
+        .btn-up {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #8b5cf6;
+            border-radius: 40px;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+            box-shadow: 0 4px 12px rgba(98, 0, 128, 0.3);
+            z-index: 999;
+        }
+        .btn-up:hover {
+            background: #6d3bc4;
+            transform: scale(1.02);
+        }
+        @media (max-width: 680px) {
+            .container { padding: 1rem; }
+            .portfolio-section { padding: 1.2rem; }
+            .section-title { font-size: 1.4rem; }
+        }
+        .signature-line {
+            margin-top: 1rem;
+            font-family: monospace;
+            font-size: 0.8rem;
+            border-top: 1px dashed #d9caff;
+            padding-top: 0.8rem;
+            color: #5d4580;
+        }
+        .practice-photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+        .practice-photo-card {
+            background: #fefbff;
+            border-radius: 1rem;
+            border: 1px solid #efe5fc;
+            overflow: hidden;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .practice-photo-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(98, 30, 150, 0.15);
+            border-color: #c6a8ff;
+        }
+        .practice-photo-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            background: #f0eaff;
+            transition: 0.2s;
+        }
+        .practice-photo-caption {
+            padding: 0.6rem;
+            font-size: 0.8rem;
+            text-align: center;
+            color: #5d4580;
+            background: #fcfaff;
+            font-weight: 500;
+        }
+        .practice-place {
+            background: #ede4ff;
+            padding: 0.8rem 1.2rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+        .new-cert-badge {
+            background-color: #d9c5ff;
+            font-size: 0.6rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 30px;
+            margin-left: 0.5rem;
+            color: #4b2a7a;
+            font-weight: 500;
+        }
+
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.92);
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            padding: 2rem;
+            position: relative;
+        }
+        .modal-img {
+            max-width: 92%;
+            max-height: 82%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            border: 2px solid #fff;
+            display: none;
+        }
+        .modal-caption {
+            color: white;
+            margin-top: 0.8rem;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.6);
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            text-align: center;
+            max-width: 90%;
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001;
+            background: rgba(0,0,0,0.3);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .modal-close:hover {
+            color: #bbb;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .cert-filename {
+            font-size: 0.7rem;
+            color: #7860a0;
+            margin: 5px 0;
+            word-break: break-all;
+        }
+
+        .view-hint {
+            font-size: 0.7rem;
+            color: #8a6bb5;
+            margin-top: 0.2rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 480px) {
+            .modal-close {
+                top: 10px;
+                right: 10px;
+                width: 40px;
+                height: 40px;
+                font-size: 28px;
+            }
+            .modal-img {
+                max-height: 70%;
+                max-width: 96%;
+            }
+            .modal-caption {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- ТИТУЛЬНЫЙ ЛИСТ -->
+    <div class="portfolio-section" style="text-align: center; background: linear-gradient(125deg, #ffffff 0%, #faf5ff 100%); border-top: 4px solid #a05eff;">
+        <div style="margin-bottom: 0.5rem;">
+            <span class="badge-official"><i class="fas fa-building"></i> ГБОУПО «Севастопольский торгово-экономический техникум»</span>
+        </div>
+        <h1 style="font-size: 2rem; font-weight: 800; background: linear-gradient(120deg, #401c66, #9b4dff); -webkit-background-clip: text; background-clip: text; color: transparent;">ПОРТФОЛИО</h1>
+        <p style="font-size: 1.1rem; margin: 0.5rem 0;">обучающаяся по специальности</p>
+        <div style="background: #ede4ff; display: inline-block; padding: 0.5rem 2rem; border-radius: 60px; margin: 1rem 0; color: #2d1b46; font-weight: 600;">
+            <strong>09.02.07 Информационные системы и программирование</strong>
+        </div>
+        <div class="visa-card" style="justify-content: center; text-align: left; max-width: 700px; margin: 0 auto;">
+            <div>
+                <p><strong>Студентка:</strong> Табарина Владислава Викторовна</p>
+                <p><strong>Группа:</strong> ИСП9-2</p>
+                <p><strong>Период представления документов:</strong> 2022 г. – 2026 г.</p>
+                <p><strong>г. Севастополь, 2026 г.</strong></p>
+            </div>
+            <img src="авка на сайт.jpg" alt="Фото студента" class="visa-photo" onerror="this.src='https://placehold.co/300x300/f4edff/8b5cf6?text=Фото+студента'">
+        </div>
+        <div class="signature-line">
+            <i class="fas fa-check-circle" style="color: #9b4dff;"></i> Портфолио сформировано согласно Положению ГБОУПО «СТЭТ» от 2016 г.
+        </div>
+    </div>
+
+    <!-- 1. ВИЗИТНАЯ КАРТОЧКА СТУДЕНТА -->
+    <div class="portfolio-section">
+        <div class="section-title">
+            <i class="fas fa-id-card"></i> 
+            <span>1. Визитная карточка студента</span>
+        </div>
+        <div class="visa-card">
+            <div class="visa-details">
+                <p><strong>ФИО:</strong> Табарина Владислава Викторовна</p>
+                <p><strong>Дата рождения:</strong> 25 августа 2006 г.</p>
+                <p><strong>Специальность:</strong> 09.02.07 Информационные системы и программирование</p>
+                <p><strong>Учебная группа:</strong> ИСП9-2</p>
+                <p><strong>Цели обучения:</strong> освоение профессиональных компетенций в области веб-разработки, IT-дизайна, углубление навыков проектирования ПО.</p>
+                <p><strong>Жизненный девиз:</strong> «Код и творчество – две стороны успеха»</p>
+                <p><strong>Сведения о дополнительном образовании:</strong> Малая академия наук (веб-программирование), цифровая иллюстрация.</p>
+                <p><strong>Хобби, интересы:</strong> цифровой рисунок (Krita), видеомонтаж (CapCut), дизайн товаров, работа в Adobe Photoshop и Adobe Illustrator, создание визуальных новелл, создание мини игр HTML.</p>
+            </div>
+        </div>
+        <div class="stud-info-line">
+            <i class="fas fa-calendar-alt"></i> Период обучения в техникуме: 2022 – 2026 &nbsp;|&nbsp; 
+            <i class="fas fa-user-graduate"></i> Курс: 4 (выпускной) &nbsp;|&nbsp;
+            <i class="fas fa-map-marker-alt"></i> г. Севастополь
+        </div>
+    </div>
+
+    <!-- 2. ОБЩИЕ И ПРОФЕССИОНАЛЬНЫЕ КОМПЕТЕНЦИИ -->
+    <div class="portfolio-section">
+        <div class="section-title">
+            <i class="fas fa-chalkboard-user"></i>
+            <span>2. Общие и профессиональные компетенции специалиста</span>
+        </div>
+        <div class="grid-2col">
+            <div class="info-card">
+                <h3 style="color:#5b2c9a;"><i class="fas fa-users"></i> Общие компетенции (ОК)</h3>
+                <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>ОК 01. Понимание сущности и социальной значимости будущей профессии.</li>
+                    <li>ОК 02. Способность организовывать собственную деятельность, выбор методов и способов выполнения задач.</li>
+                    <li>ОК 04. Умение осуществлять поиск, анализ и оценку информации.</li>
+                    <li>ОК 05. Владение информационно-коммуникационными технологиями.</li>
+                    <li>ОК 06. Навык работы в коллективе и взаимодействие с руководством.</li>
+                    <li>ОК 09. Ориентация в условиях частой смены технологий.</li>
+                </ul>
+            </div>
+            <div class="info-card">
+                <h3 style="color:#5b2c9a;"><i class="fas fa-code"></i> Профессиональные компетенции (ПК)</h3>
+                <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+                    <li>ПК 1.1 Участие в разработке программных модулей.</li>
+                    <li>ПК 1.2 Участие в осуществлении интеграции модулей в программное обеспечение.</li>
+                    <li>ПК 2.3 Участие в решении задач администрирования баз данных.</li>
+                    <li>ПК 4.4 Участие в проведении тестирования и отладки.</li>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <p><span class="doc-badge"><i class="far fa-file-alt"></i> Оценочный лист сформированности ОК и ПК прилагается (характеристика с преддипломной практики)</span></p>
+    </div>
+
+    <!-- 3. ПРОХОЖДЕНИЕ ПРОИЗВОДСТВЕННОЙ ПРАКТИКИ -->
+    <div class="portfolio-section">
+        <div class="section-title">
+            <i class="fas fa-briefcase"></i>
+            <span>3. Прохождение производственной практики</span>
+        </div>
+        
+        <div class="practice-place">
+            <i class="fas fa-building" style="color:#7c3aed;"></i> <strong>Место прохождения практики:</strong> АО «Севастопольский винодельческий завод», г. Севастополь, ул. Портовая, 8 <br>
+            <span style="font-size: 0.85rem;"><i class="fas fa-calendar-alt"></i> Период: 10.02.2026 – 28.03.2026 | Должность: стажер-разработчик 1С</span>
+        </div>
+
+        <div class="info-card" style="margin-bottom: 1.2rem;">
+            <h3 style="color:#5b2c9a;"><i class="fas fa-tasks"></i> Выполненные задачи и освоенные компетенции</h3>
+            <ul style="margin-left: 1.2rem; margin-top: 0.5rem;">
+                <li>Участие в тестировании и отладке программных модулей 1С (ПК 4.4).</li>
+                <li>Интеграция готовых блоков в основную систему 1С (ПК 1.2).</li>
+                <li>Работа с базами данных 1С – ПК 2.3.</li>
+            </ul>
+            <p style="margin-top: 0.8rem;"><i class="fas fa-star" style="color:#ffb347;"></i> <strong>Отзыв руководителя практики:</strong> «Табарина В.В. проявила высокий уровень самостоятельности, грамотно применяла профессиональные компетенции. Рекомендуемый балл – отлично.»</p>
+        </div>
+
+        <h3><i class="fas fa-camera"></i> Фотографии с практики</h3>
+        <div class="practice-photo-grid" id="practicePhotosGrid"></div>
+        <div class="stud-info-line" style="margin-top: 1rem;">
+            <i class="fas fa-file-alt"></i> Аттестационный лист производственной практики, дневник практики и отчет прилагаются к портфолио.
+        </div>
+    </div>
+
+    <!-- 4. ТВОРЧЕСКИЕ ДОСТИЖЕНИЯ -->
+    <div class="portfolio-section">
+        <div class="section-title">
+            <i class="fas fa-users-viewfinder"></i>
+            <span>4. Творческие достижения</span>
+        </div>
+        <div class="grid-2col">
+            <div class="info-card">
+                <h3 style="color:#6b3eb8;"><i class="fas fa-palette"></i> Творческие достижения</h3>
+                <p>Диплом за лучшую фотоработу в городской акции «Подкормите птиц зимой», участие в выставке цифрового рисунка 2019.</p>
+                <p><i class="fas fa-certificate"></i> Также творческая активность подтверждена благодарственными письмами и сертификатами.</p>
+                <span class="doc-badge">Городская акция «Подкормите птиц зимой»</span>
+                <span class="doc-badge">Выставка цифрового рисунка 2019</span>
+            </div>
+            <div class="info-card">
+                <h3 style="color:#6b3eb8;"><i class="fas fa-camera"></i> Фотоматериалы</h3>
+                <p>Фотоматериалы творческой активности доступны в разделе с документами и отдельной папке портфолио.</p>
+            </div>
+        </div>
+        <div class="stud-info-line">
+            <i class="fas fa-camera-retro"></i> Дополнительные творческие проекты и конкурсные работы представлены в портфолио.
+        </div>
+    </div>
+
+    <!-- СЕРТИФИКАТЫ И ДОКУМЕНТЫ -->
+    <div class="portfolio-section">
+        <div class="section-title">
+            <i class="fas fa-medal"></i>
+            <span>Сертификаты и документы о дополнительном образовании</span>
+        </div>
+        <p>Перечень сертификатов, подтверждающих прохождение курсов, участие в акциях, диктантах и профессиональных мероприятиях.</p>
+        <p style="font-size:0.85rem; color:#6b4d91;"><i class="fas fa-info-circle"></i> Нажмите на карточку, чтобы просмотреть документ</p>
+        <div id="certificatesContainer" class="certs-grid"></div>
+        <div class="signature-line" style="margin-top: 1rem;">
+            <i class="fas fa-check"></i> Все представленные материалы заверяются классным руководителем и соответствуют п. 1.5 Положения о портфолио.
+        </div>
+    </div>
+
+    <!-- КОНТАКТЫ -->
+    <div class="portfolio-section">
+        <div class="section-title">
+            <i class="fas fa-envelope-open-text"></i>
+            <span>Контакты</span>
+        </div>
+        <div class="contact-links">
+            <div class="contact-item"><i class="fas fa-at"></i> <a href="mailto:gloria.gestant@yandex.ru">gloria.gestant@yandex.ru</a></div>
+            <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:vlada_tabarina@mail.ru">vlada_tabarina@mail.ru</a></div>
+            <div class="contact-item"><i class="fab fa-vk"></i> <a href="https://vk.com/tabarina2020" target="_blank" rel="noopener noreferrer">VK: vk.com/tabarina2020</a></div>
+        </div>
+        <p style="margin-top: 1rem;"><i class="fas fa-briefcase"></i> Портфолио может служить основой для резюме и прохождения государственной итоговой аттестации (п.1.7 Положения).</p>
+    </div>
+    <footer>
+        © 2026 Портфолио обучающейся ГБОУПО «Севастопольский торгово-экономический техникум» Табариной Владиславы Викторовны <br>
+        Документ разработан в соответствии с Положением о портфолио (Приложение 1), утверждённым методическим советом 2016 г.
+    </footer>
+</div>
+<button class="btn-up" id="backToTop"><i class="fas fa-arrow-up"></i></button>
+
+<!-- Модальное окно -->
+<div id="photoModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <div class="modal-content">
+        <img class="modal-img" id="modalImage" alt="Увеличенное фото">
+        <div class="modal-caption" id="modalCaption"></div>
+    </div>
+</div>
+
+<script>
+    // ========= СПИСОК СЕРТИФИКАТОВ (все теперь JPG) =========
+    const certificatesList = [
+        { name: "✨ Сертификат «Звездочет» — астрономический конкурс", file: "Сертификат_Звездочет.jpg" },
+        { name: "🖥️ Сертификат «3D моделирование» — основы трехмерного проектирования", file: "Сертификат_3D_моделирование.jpg" },
+        { name: "📘 Диплом победителя Всероссийский экономический диктант", file: "Диплом победителя Общероссийской образовательной акции Всероссийский экономический диктант.jpg" },
+        { name: "🏅 Диплом ПРИЗЁРА олимпиады БАЙКАЛЬСКАЯ ПЕРСПЕКТИВА ПЛЮС", file: "диплом ПРИЗЁРА отборочного этапа олимпиады студентов БАЙКАЛЬСКАЯ ПЕРСПЕКТИВА ПЛЮС.jpg" },
+        { name: "🎖 Диплом участника ДИКТАНТ ПОБЕДЫ - 2023", file: "Диплом_участника_«ДИКТАНТ_ПОБЕДЫ_–_2023».jpg" },
+        { name: "🎖 Диплом участника ДИКТАНТ ПОБЕДЫ - 2024", file: "Диплом_участника_«ДИКТАНТ_ПОБЕДЫ_–_2024».jpg" },
+        { name: "🌍 Сертификат Большой этнографический диктант - 2022", file: "Сертификат Большой этнографический диктант - 2022-.jpg" },
+        { name: "🌍 Сертификат Большой этнографический диктант - 2023", file: "Сертификат Большой этнографический диктант - 2023.jpg" },
+        { name: "💰 Сертификат ЛИЧНЫЙ ФИНАНСОВЫЙ ЗАЧЕТ", file: "Сертификат ЛИЧНЫЙ ФИНАНСОВЫЙ ЗАЧЕТ.jpg" },
+        { name: "🎬 Сертификат Покадровая анимация", file: "Сертификат Покадровая анимация.JPG" },
+        { name: "🌐 Сертификат Создание и публикация веб-сайтов", file: "Сертификат Создание и публикация веб-сайтов от основ HTML до анимации и интеграции.jpg" },
+        { name: "🖼 Сертификат Создание цифровой открытки", file: "Сертификат Создание цифровой открытки.JPG" },
+        { name: "🤖 Сертификат Эффективный промтинг", file: "Сертификат Эффективный промтинг.JPG" },
+        { name: "💾 Сертификат SQL-Island", file: "Сертификат_SQL-Island.jpg" }
+    ];
+
+    const practicePhotos = [
+        { src: "Завод СВЗ отделка.jpg", caption: "Отделочные работы на заводе СВЗ" },
+        { src: "Завод СВЗ Розлив.jpg", caption: "Процесс розлива на заводе СВЗ" },
+        { src: "Работа в 1с печать.jpg", caption: "Работа в 1С: печать документов" },
+        { src: "Работа в 1С.jpg", caption: "Работа в системе 1С" },
+        { src: "Работа Цеха.jpg", caption: "Работа цеха — производственный процесс" },
+        { src: "СВЗ.png", caption: "Севастопольский винодельческий завод" }
+    ];
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m){
+            if(m === '&') return '&amp;';
+            if(m === '<') return '&lt;';
+            if(m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function getFullPath(fileName) {
+        return './' + encodeURIComponent(fileName);
+    }
+
+    // ====== МОДАЛЬНОЕ ОКНО ======
+    const modal = document.getElementById('photoModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+    const closeModalBtn = document.querySelector('.modal-close');
+
+    function openModalImage(src, caption) {
+        modalImage.style.display = 'block';
+        modalImage.src = src;
+        modalCaption.textContent = caption;
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModalFunc() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', closeModalFunc);
+    }
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            closeModalFunc();
+        }
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.style.display === 'block') {
+            closeModalFunc();
+        }
+    });
+
+    // ====== РЕНДЕР СЕРТИФИКАТОВ ======
+    function renderCertificates() {
+        const container = document.getElementById('certificatesContainer');
+        if (!container) return;
+        container.innerHTML = '';
+        certificatesList.forEach(cert => {
+            const path = getFullPath(cert.file);
+            let isNew = (cert.name.includes("Звездочет") || cert.name.includes("3D моделирование"));
+            const newBadge = isNew ? '<span class="new-cert-badge"><i class="fas fa-star-of-life"></i> новое</span>' : '';
+
+            const card = document.createElement('div');
+            card.className = 'cert-card';
+            
+            card.addEventListener('click', function(e) {
+                if (e.target.closest('.cert-link')) return;
+                openModalImage(path, cert.name);
+            });
+
+            card.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap;">
+                    <i class="fas fa-file-image" style="font-size: 1.8rem; color:#9b4dff;"></i>
+                    <div class="cert-title" style="display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap;">
+                        ${escapeHtml(cert.name)} ${newBadge}
+                    </div>
+                </div>
+                <div class="file-preview-area">
+                    <div class="file-preview">
+                        <img src="${path}" alt="preview" loading="lazy" 
+                             onerror="this.parentElement.innerHTML='<div style=\\'padding:1rem;color:#7b4ca0\\'><i class=\\'fas fa-image\\'></i> файл не найден</div>'">
+                    </div>
+                </div>
+                <div class="cert-filename">${escapeHtml(cert.file)}</div>
+                <button class="cert-link" onclick="event.stopPropagation(); openModalImage('${path}', '${escapeHtml(cert.name)}')">
+                    <i class="fas fa-search-plus"></i> Увеличить
+                </button>
+                <div class="view-hint">
+                    <i class="fas fa-hand-pointer"></i> Нажмите на карточку для просмотра
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    function renderPracticePhotos() {
+        const grid = document.getElementById('practicePhotosGrid');
+        if (!grid) return;
+        grid.innerHTML = '';
+        if (practicePhotos.length === 0) {
+            grid.innerHTML = '<div class="info-card" style="grid-column:1/-1; text-align:center;">Фотографии с практики будут добавлены позднее</div>';
+            return;
+        }
+        practicePhotos.forEach(photo => {
+            const photoPath = getFullPath(photo.src);
+            const card = document.createElement('div');
+            card.className = 'practice-photo-card';
+            card.innerHTML = `
+                <img src="${photoPath}" alt="${escapeHtml(photo.caption)}" loading="lazy" 
+                     onerror="this.src='https://placehold.co/400x240/f4edff/8b5cf6?text=${encodeURIComponent(photo.caption)}'; this.onerror=null;">
+                <div class="practice-photo-caption">${escapeHtml(photo.caption)}</div>
+            `;
+            card.addEventListener('click', (e) => {
+                const imgElement = card.querySelector('img');
+                if (imgElement) {
+                    openModalImage(imgElement.src, photo.caption);
+                }
+            });
+            grid.appendChild(card);
+        });
+    }
+
+    // Кнопка "наверх"
+    const toTop = document.getElementById('backToTop');
+    if(toTop) {
+        toTop.addEventListener('click', () => window.scrollTo({top:0,behavior:'smooth'}));
+    }
+
+    renderCertificates();
+    renderPracticePhotos();
+</script>
+</body>
+</html>
